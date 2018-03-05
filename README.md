@@ -22,7 +22,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Export schema to CSV:
+
+    $ bundle exec export_schema
 
 ## Development
 
