@@ -24,7 +24,6 @@ task export_md: :environment do
   File.open('schemate.md', 'w') do |file|
     ActiveRecord::Base.connection.tables.each do |table|
       next if table.in?(%w(schema_migrations ar_internal_metadata))
-      puts "#{table}"
       file.puts("# Table name: `#{table}` \n")
       file.puts('## Columns')
       file.puts('|FieldName |Attitutde |Size |NULL |Default |Comment |')
