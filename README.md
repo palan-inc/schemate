@@ -1,8 +1,19 @@
 # Schemate
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/schemate`. To experiment with that code, run `bin/console` for an interactive prompt.
+Export current schema of ActiveRecord models as markdown or CSV
 
-TODO: Delete this and the text above, and describe your gem
+The schema list (schemate.md) looks like this:
+```
+# Table name: `users` 
+## Columns
+|FieldName |Attitutde |Size |NULL |Default |Comment |
+|---|---|---|---|---|---|
+|id |integer |8 |false | ||
+|name |string |255 |true | ||
+|email |string |255 |false | ||
+|crypted_password |string |255 |true | ||
+|salt |string |255 |true | ||
+```
 
 ## Installation
 
