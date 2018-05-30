@@ -18,9 +18,9 @@ namespace :schemate do
           )
         end
         file << %w()
-        puts 'complete! See schemate.csv!'
       end
     end
+    puts 'complete! See schemate.csv!'
   end
 
   desc 'Create Markdown file from schema information'
