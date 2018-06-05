@@ -35,11 +35,12 @@ module Schemate
 
           next unless tables.include?(table_name)
           file << %W(#{table_name})
-          file << %w(FieldName Attitutde Size NULL Default Comment)
+          file << %w(FieldName Attitutde Size NULL Default Index Comment)
           model.columns.each do |columns|
+            index = '  ○' if model.connection.index_exists?(:"#{table_name}", :"#{columns.name}")
             file << %W(
               #{columns.name} #{columns.type} #{columns.limit}
-              #{columns.null} #{columns.default} #{columns.comment}
+              #{columns.null} #{columns.default} #{index} #{columns.comment}
             )
           end
           file << %w()
@@ -56,10 +57,11 @@ module Schemate
           next unless tables.include?(table_name)
           file.puts("# Table name: `#{table_name}` \n")
           file.puts('## Columns')
-          file.puts('|FieldName |Attitutde |Size |NULL |Default |Comment |')
-          file.puts('|---|---|---|---|---|---|')
+          file.puts('|FieldName |Attitutde |Size |NULL |Default |Index |Comment |')
+          file.puts('|---|---|---|---|---|---|---|')
           model.columns.each do |columns|
-            file.puts("|#{columns.name} |#{columns.type} |#{columns.limit} |#{columns.null} |#{columns.default} |#{columns.comment}|")
+            index = '○' if model.connection.index_exists?(:"#{table_name}", :"#{columns.name}")
+            file.puts("|#{columns.name} |#{columns.type} |#{columns.limit} |#{columns.null} |#{columns.default} |#{index}|#{columns.comment} |")
           end
           file.puts("\n")
         end
