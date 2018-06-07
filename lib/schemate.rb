@@ -37,7 +37,7 @@ module Schemate
           file << %W(#{table_name})
           file << %w(FieldName Attitutde Size NULL Default Index Comment)
           model.columns.each do |columns|
-            index = '  ○' if model.connection.index_exists?(:"#{table_name}", :"#{columns.name}")
+            index = 'true' if model.connection.index_exists?(:"#{table_name}", :"#{columns.name}")
             file << %W(
               #{columns.name} #{columns.type} #{columns.limit}
               #{columns.null} #{columns.default} #{index} #{columns.comment}
@@ -60,7 +60,7 @@ module Schemate
           file.puts('|FieldName |Attitutde |Size |NULL |Default |Index |Comment |')
           file.puts('|---|---|---|---|---|---|---|')
           model.columns.each do |columns|
-            index = '○' if model.connection.index_exists?(:"#{table_name}", :"#{columns.name}")
+            index = 'true' if model.connection.index_exists?(:"#{table_name}", :"#{columns.name}")
             file.puts("|#{columns.name} |#{columns.type} |#{columns.limit} |#{columns.null} |#{columns.default} |#{index}|#{columns.comment} |")
           end
           file.puts("\n")
