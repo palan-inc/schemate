@@ -1,4 +1,4 @@
-# Schemate
+# Schemate [![Build Status](https://travis-ci.org/eishis/schemate.svg?branch=master)](https://travis-ci.org/eishis/schemate)
 
 Export current schema of ActiveRecord models as markdown or CSV
 
