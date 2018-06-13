@@ -14,6 +14,6 @@ module Schemate
   end
 
   configure do |config|
-    config.auto_generate = "false"
+    config.auto_generate = false
   end
 end
