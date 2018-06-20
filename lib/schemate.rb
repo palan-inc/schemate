@@ -24,16 +24,6 @@ module Schemate
       puts_complete_message(format)
     end
 
-    private
-
-    def export_as(format)
-      if format == 'csv'
-        export_csv
-      elsif format == 'md'
-        export_md
-      end
-    end
-
     def export_csv
       CSV.open('schemate.csv', 'w') do |file|
         ActiveRecord::Base.descendants.each do |model|
@@ -81,6 +71,16 @@ module Schemate
 
     def md_row(columns, index)
       "|#{columns.name} |#{columns.type} |#{columns.limit} |#{columns.null} |#{columns.default} |#{index}|#{columns.comment} |"
+    end
+
+    private
+
+    def export_as(format)
+      if format == 'csv'
+        export_csv
+      elsif format == 'md'
+        export_md
+      end
     end
 
     def tables
