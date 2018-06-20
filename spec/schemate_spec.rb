@@ -6,10 +6,6 @@ describe Schemate do
     expect(Schemate::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
-  end
-
   def mock_class(table_name, primary_key, columns, indexes = [], foreign_keys = [])
     options = {
       connection:       mock_connection(indexes, foreign_keys),

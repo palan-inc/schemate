@@ -1,10 +1,12 @@
 require "schemate/version"
 
 module Schemate
-  class Railtie < ::Rails::Railtie
-    rake_tasks do
-      load "tasks/export_schema.rake"
-      load "tasks/schemate_migrate.rake"
+  if defined?(::Rails::Railtie)
+    class Railtie < ::Rails::Railtie
+      rake_tasks do
+        load "tasks/export_schema.rake"
+        load "tasks/schemate_migrate.rake"
+      end
     end
   end
 
@@ -13,7 +15,12 @@ module Schemate
       return if format.nil?
 
       Rails.application.eager_load!
-      export_as(format)
+      begin
+        export_as(format)
+      rescue StandardError => ex
+        STDERR.puts "Unable to export : #{ex.message}"
+        return
+      end
       puts_complete_message(format)
     end
 
