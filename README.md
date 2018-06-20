@@ -1,4 +1,4 @@
-# Schemate
+# Schemate [![Build Status](https://travis-ci.org/eishis/schemate.svg?branch=master)](https://travis-ci.org/eishis/schemate) [![Coverage Status](https://coveralls.io/repos/github/eishis/schemate/badge.svg?branch=master)](https://coveralls.io/github/eishis/schemate?branch=master)
 
 Export current schema of ActiveRecord models as markdown or CSV
 
