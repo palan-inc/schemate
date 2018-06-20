@@ -1,7 +1,7 @@
 require "spec_helper"
 require 'schemate'
 
-describe Schemate do
+RSpec.describe Schemate do
   it "has a version number" do
     expect(Schemate::VERSION).not_to be nil
   end
@@ -43,8 +43,10 @@ describe Schemate do
     double('Column', stubs)
   end
 
-  it do
-    column = mock_column(:id, :integer, limit: 8)
-    expect(Schemate.csv_row(column 'true')).to eq("id integer 8 true nil true nil")
+  describe "Schemate#csv_row" do
+    it do
+      column = mock_column(:id, :integer, limit: 8, comment: 'ID')
+      expect(Schemate.csv_row(column, 'true')).to eq(["id", "integer", "8", "false", "", "true", "ID"])
+    end
   end
 end
