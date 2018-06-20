@@ -13,7 +13,13 @@ module Schemate
       return if format.nil?
 
       Rails.application.eager_load!
-      export_as(format)
+      begin
+        export_as(format)
+      rescue StandardError => ex
+        STDERR.puts "Unable to export : #{ex.message}"
+        STDERR.puts "\t" + ex.backtrace.join("\n\t") if options[:trace]
+        return
+      end
       puts_complete_message(format)
     end
 
