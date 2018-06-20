@@ -6,28 +6,6 @@ RSpec.describe Schemate do
     expect(Schemate::VERSION).not_to be nil
   end
 
-  def mock_class(table_name, primary_key, columns, indexes = [], foreign_keys = [])
-    options = {
-      connection:       mock_connection(indexes, foreign_keys),
-      table_exists?:    true,
-      table_name:       table_name,
-      primary_key:      primary_key,
-      column_names:     columns.map { |col| col.name.to_s },
-      columns:          columns,
-      column_defaults:  Hash[columns.map { |col| [col.name, col.default] }],
-      table_name_prefix: ''
-    }
-
-    double('An ActiveRecord class', options)
-  end
-
-  def mock_connection(indexes = [], foreign_keys = [])
-    double('Conn',
-           indexes:      indexes,
-           foreign_keys: foreign_keys,
-           supports_foreign_keys?: true)
-  end
-
   def mock_column(name, type, options = {})
     default_options = {
       limit: nil,
