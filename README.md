@@ -35,7 +35,25 @@ Or install it yourself as:
 
 Export schema to CSV:
 
-    $ bundle exec rake export_schema
+    $ bundle exec rake schemate:export_csv
+
+Export schema to Markdown:
+
+    $ bundle exec rake schemate:export_md
+
+## Configuration
+To generate a configuration file(config/initializers/schemate.rb), to set default options:
+
+    $ rails g schemate:install
+
+By default, schema is exported only when you run `schemate:export_csv` or `schemate:export_md`.  
+If you want to export schema as markdown automatically with `rake db:migrate`, edit the file and change:
+
+    config.auto_generate = false
+
+To:
+
+    config.auto_generate = true
 
 ## Contributing
 
