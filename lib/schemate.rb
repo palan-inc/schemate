@@ -24,16 +24,6 @@ module Schemate
       puts_complete_message(format)
     end
 
-    private
-
-    def export_as(format)
-      if format == 'csv'
-        export_csv
-      elsif format == 'md'
-        export_md
-      end
-    end
-
     def export_csv
       CSV.open('schemate.csv', 'w') do |file|
         ActiveRecord::Base.descendants.each do |model|
@@ -45,14 +35,18 @@ module Schemate
           file << %w(FieldName Attitutde Size NULL Default Index Comment)
           model.columns.each do |columns|
             index = 'true' if model.connection.index_exists?(:"#{table_name}", :"#{columns.name}")
-            file << %W(
-              #{columns.name} #{columns.type} #{columns.limit}
-              #{columns.null} #{columns.default} #{index} #{columns.comment}
-            )
+            file << csv_row(columns, index)
           end
           file << %w()
         end
       end
+    end
+
+    def csv_row(columns, index)
+      %W(
+        #{columns.name} #{columns.type} #{columns.limit}
+        #{columns.null} #{columns.default} #{index} #{columns.comment}
+      )
     end
 
     def export_md
@@ -68,10 +62,24 @@ module Schemate
           file.puts('|---|---|---|---|---|---|---|')
           model.columns.each do |columns|
             index = 'true' if model.connection.index_exists?(:"#{table_name}", :"#{columns.name}")
-            file.puts("|#{columns.name} |#{columns.type} |#{columns.limit} |#{columns.null} |#{columns.default} |#{index}|#{columns.comment} |")
+            file.puts(md_row(columns, index))
           end
           file.puts("\n")
         end
+      end
+    end
+
+    def md_row(columns, index)
+      "|#{columns.name} |#{columns.type} |#{columns.limit} |#{columns.null} |#{columns.default} |#{index}|#{columns.comment} |"
+    end
+
+    private
+
+    def export_as(format)
+      if format == 'csv'
+        export_csv
+      elsif format == 'md'
+        export_md
       end
     end
 
