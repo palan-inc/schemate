@@ -56,7 +56,7 @@ module Schemate
           table_name = model_name.tableize
 
           next unless tables.include?(table_name)
-          file.puts("# Table name: `#{table_name}` \n")
+          file.puts("# Table name: `#{table_name}`\n")
           file.puts('## Columns')
           file.puts('|FieldName |Attitutde |Size |NULL |Default |Index |Comment |')
           file.puts('|---|---|---|---|---|---|---|')
