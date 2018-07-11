@@ -11,9 +11,11 @@ module Schemate
   class Configuration
     include ActiveSupport::Configurable
     config_accessor :auto_generate
+    config_accessor :auto_generate_type
   end
 
   configure do |config|
     config.auto_generate = false
+    config.auto_generate_type = 'md'
   end
 end
