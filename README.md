@@ -49,10 +49,6 @@ To generate a configuration file(config/initializers/schemate.rb), to set defaul
 By default, schema is exported only when you run `schemate:export_csv` or `schemate:export_md`.  
 If you want to export schema as markdown automatically with `rake db:migrate`, edit the file and change:
 
-    config.auto_generate = false
-
-To:
-
     config.auto_generate = true
 
 ## Contributing
