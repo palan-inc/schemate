@@ -46,10 +46,17 @@ To generate a configuration file(config/initializers/schemate.rb), to set defaul
 
     $ rails g schemate:install
 
+Edit this file to control auto generation, and output format.
+
 By default, schema is exported only when you run `schemate:export_csv` or `schemate:export_md`.  
-If you want to export schema as markdown automatically with `rake db:migrate`, edit the file and change:
+If you want to export schema automatically with `rake db:migrate`, edit the file and change:
 
     config.auto_generate = true
+
+By default, auto generate file type is markdown.  
+If you want to generate file as csv, edit the file and change:
+
+    config.auto_generate_type = 'csv'
 
 ## Contributing
 
