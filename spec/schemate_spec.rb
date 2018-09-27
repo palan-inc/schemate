@@ -27,4 +27,11 @@ RSpec.describe Schemate do
       expect(Schemate.csv_row(column, 'true')).to eq(["id", "integer", "8", "false", "", "true", "ID"])
     end
   end
+
+  describe "Schemate#markdown_row" do
+    it do
+      column = mock_column(:id, :integer, limit: 8, comment: 'ID')
+      expect(Schemate.md_row(column, 'true')).to eq("|id |integer |8 |false | |true |ID |")
+    end
+  end
 end
