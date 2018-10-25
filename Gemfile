@@ -7,7 +7,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'rspec', require: false
 
-  gem 'rubocop', '~> 0.46.0'
+  gem "rubocop", ">= 0.49.0"
   gem 'simplecov', require: false
 
   gem 'codeclimate-test-reporter'
