@@ -70,7 +70,7 @@ module Schemate
     end
 
     def md_row(columns, index)
-      "|#{columns.name} |#{columns.type} |#{columns.limit} |#{columns.null} |#{columns.default} |#{index}|#{columns.comment} |"
+      "|#{columns.name} |#{columns.type} |#{columns.limit} |#{columns.null} |#{columns.default} |#{index} |#{columns.comment} |"
     end
 
     private
