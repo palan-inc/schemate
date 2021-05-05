@@ -7,11 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = "schemate"
   spec.version       = Schemate::VERSION
   spec.authors       = ["eishisaito", "yuh-pen", "kaket4n"]
-  spec.email         = ["saito@eishis.com"]
+  spec.email         = ["saito@palan.co.jp"]
 
   spec.summary       = 'Export Schema Data as CSV and Markdown format'
   spec.description   = 'Export Schema Data as CSV and Markdown format'
-  spec.homepage      = 'https://github.com/eishis/schemate'
+  spec.homepage      = 'https://github.com/palan-inc/schemate'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
